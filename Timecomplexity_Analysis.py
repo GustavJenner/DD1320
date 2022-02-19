@@ -16,7 +16,7 @@ def create_lesser_list(n):
     return lesser_list, last_track
 
 
-def linearsearch(track_list, last_track):
+def linear_search(track_list, last_track):
     found = False
     for tracks in track_list:
         if last_track.tracktitle == tracks.tracktitle:
@@ -64,6 +64,7 @@ def hashsearch(track_list, last_track):
 
 n = 20
 track_list, last_track = create_lesser_list(n)
-linearsearch(track_list, last_track)
+linear_search(track_list, last_track)
 binarysearch(track_list,last_track)
 hashsearch(track_list,last_track)
+#%%
