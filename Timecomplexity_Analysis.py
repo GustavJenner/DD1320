@@ -17,13 +17,9 @@ def create_lesser_list(n):
 
 
 def linear_search(list, test_track):
-    found = False
     for tracks in list:
         if test_track == tracks.tracktitle:
-            print("found track " + tracks.tracktitle)
-            found = True
             break
-    return found
 
 
 def get_track(obj):
@@ -31,7 +27,6 @@ def get_track(obj):
 
 
 def binarysearch(list, test_track):
-    list.sort()
     low = 0
     high = len(track_list) - 1
     found = False
@@ -40,8 +35,6 @@ def binarysearch(list, test_track):
         middle = (low + high) // 2
         if list[middle].tracktitle == test_track:
             found = True
-            print("found track " + list[middle].tracktitle)
-            break
         else:
             if test_track < list[middle].tracktitle:
                 high = middle - 1
@@ -50,17 +43,13 @@ def binarysearch(list, test_track):
 
 
 
-def hashsearch(list, test_id):
+def create_hash_table(list):
     hash_table = {}
 
     for tracks in list:
         hash_table[tracks.trackid] = tracks.tracktitle
 
-    if test_id in hash_table:
-        print("found track ", hash_table[test_id])
-        return True
-    else:
-        return False
+    return hash_table
 
 
 def bubblesort(list):
@@ -105,15 +94,23 @@ def mergesort(data):
             data[k] = right[j]
             j = j + 1
             k = k + 1
-    return data
 
-n = 25000
+
+n = 1000000
 track_list, last_track = create_lesser_list(n)
-
-
-#time_linear = timeit.timeit(stmt = lambda: linear_search(track_list, last_track.tracktitle), number = 10000)
-time_linear = timeit.timeit(stmt = lambda: binarysearch(track_list, last_track.tracktitle), number = 10)
-print(time_linear)
+# hash_table = create_hash_table(track_list)
+# time_linear = timeit.timeit(stmt = lambda: linear_search(track_list, last_track.tracktitle), number = 10000)
+# time_hash = timeit.timeit(stmt = lambda: hash_table[last_track.trackid], number = 10000)
+# track_list.sort()
+# time_binary = timeit.timeit(stmt = lambda: binarysearch(track_list, last_track.tracktitle), number = 10000)
+# print("linear "+str(time_linear))
+# print("binary "+str(time_binary))
+# print("hash "+str(time_hash))
+#time_bubble = timeit.timeit(stmt = lambda: bubblesort(track_list), number = 1)
+time_merge = timeit.timeit(stmt = lambda: mergesort(track_list), number = 1)
+#print("bubble "+str(time_bubble))
+print("merge "+str(time_merge))
+print("hej")
 # %%
 
 #%%
