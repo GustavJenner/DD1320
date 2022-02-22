@@ -5,6 +5,8 @@ class Track:
         self.artistname = artistname
         self.tracktitle = tracktitle
 
-
     def __lt__(self, other):
-        return self.artistname < other
+        return self.tracktitle < other
+
+    def __gt__(self, other):
+        return self.tracktitle > other
