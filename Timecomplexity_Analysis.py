@@ -25,7 +25,7 @@ def linear_search(list, test_track): #linjär sök metod O(n)
 
 
 
-def binarysearch(list, test_track): #binär sökning tagen från föreläsningen O(log n)
+def binarysearch(list, test_track): #binär sökning delvis tagen från föreläsning 2 O(log n)
     low = 0
     high = len(list)-1
 
@@ -64,7 +64,7 @@ def bubblesort(list): #bubblesort O(n^2)
             j = j-1
 
     return list
-def mergesort(data): #mergesort tagen från föreläsningen O(n*log(n))
+def mergesort(data): #mergesort tagen från föreläsningen 6 O(n*log(n))
     if len(data) > 1:
         middle = len(data)//2
         left = data[:middle]
