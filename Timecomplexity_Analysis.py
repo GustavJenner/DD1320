@@ -51,20 +51,22 @@ def create_hash_table(list): #skapar en hash tabell O(1) för sökning i hash ta
     return hash_table
 
 
-def bubblesort(list): #bubblesort O(n^2)
-    i = 0
-    j = len(list)-1
-    while j != 0:
-        if list[i] > list[i + 1]:
-            list[i], list[i + 1] = list[i + 1], list[i]
-        if i < j-1:
-            i = i+1
-        else:
-            i = 0
-            j = j-1
+def bubblesort(list): #bubblesort från föreläsning 9 O(n^2)
+    j = 0
+    n = len(list)
+    cont = True
+    while cont:
+        cont = False
+        for i in range(n-1-j):
+            if list[i] > list[i + 1]:
+                list[i], list[i + 1] = list[i + 1], list[i]
+                cont = True
+        i += 1
 
     return list
-def mergesort(data): #mergesort tagen från föreläsningen 6 O(n*log(n))
+
+
+def mergesort(data): #mergesort tagen från föreläsningen 9 O(n*log(n))
     if len(data) > 1:
         middle = len(data)//2
         left = data[:middle]
@@ -95,7 +97,7 @@ def mergesort(data): #mergesort tagen från föreläsningen 6 O(n*log(n))
             k = k + 1
 
 
-n = 1000000 # Storlek på lista
+n = 100000 # Storlek på lista
 track_list, last_track = create_lesser_list(n) #objekt lista och test försök (sista låten)
 hash_table = create_hash_table(track_list) #skapar hash tabell
 #time_linear = timeit.timeit(stmt = lambda: linear_search(track_list, last_track.tracktitle), number = 10000)
