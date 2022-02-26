@@ -16,14 +16,14 @@ class DictHash:
 
 
 class HashNode:
-    def __init__(self, key, data, next=None):
+    def __init__(self, key = " ", data = None, next = None):
         self.key = key
         self.data = data
         self.next = next
 
 
 class Hashtable:
-    keys: str
+
 
     def __init__(self, size):
         self._table = [None] * 2 * size
@@ -34,7 +34,10 @@ class Hashtable:
             self._keys.append(key)
             self._table[self.hashfunction(key)] = HashNode(key, data)
         else:
+            print("store")
             help_store(self._table[self.hashfunction(key)], HashNode(key, data))
+            self._keys.append(key)
+
 
     def search(self, key):
         if key not in self._keys:
@@ -44,12 +47,13 @@ class Hashtable:
         else:
             return help_search(self._table[self.hashfunction(key)], key)
 
+
     def hashfunction(self, key):
-        hash_value = None
+        hash_value = 0
         for i, ele in enumerate(key):
             hash_value += 8 ** i * ord(ele)
-            hash_value *= hash_value
-            return hash_value % len(self._table)
+        hash_value *= hash_value
+        return hash_value % len(self._table)
 
 
 def help_store(current_node, insert_node):
@@ -63,9 +67,11 @@ def help_search(current_node, key):
     if current_node.next is None:
         raise KeyError
     elif current_node.next.key == key:
-        return current_node.next
+        return current_node.next.data
     else:
-        help_search(current_node.next, key)
+        print("hello")
+        return help_search(current_node.next, key)
+
 
 # %%
 
