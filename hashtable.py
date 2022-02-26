@@ -34,7 +34,6 @@ class Hashtable:
             self._keys.append(key)
             self._table[self.hashfunction(key)] = HashNode(key, data)
         else:
-            print("store")
             help_store(self._table[self.hashfunction(key)], HashNode(key, data))
             self._keys.append(key)
 
@@ -69,7 +68,6 @@ def help_search(current_node, key):
     elif current_node.next.key == key:
         return current_node.next.data
     else:
-        print("hello")
         return help_search(current_node.next, key)
 
 
