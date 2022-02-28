@@ -27,20 +27,20 @@ class Hashtable:
 
     def __init__(self, size):
         self._table = [None] * 2 * size
-        self._keys = []
+
 
     def store(self, key, data):
         if self._table[self.hashfunction(key)] is None:
-            self._keys.append(key)
             self._table[self.hashfunction(key)] = HashNode(key, data)
         else:
             help_store(self._table[self.hashfunction(key)], HashNode(key, data))
-            self._keys.append(key)
+
 
 
     def search(self, key):
-        if key not in self._keys:
-            raise KeyError("Key does not exist")
+        if self._table[self.hashfunction(key)] is None:
+            raise KeyError
+
         elif self._table[self.hashfunction(key)].key == key:
             return self._table[self.hashfunction(key)].data
         else:
@@ -56,7 +56,10 @@ class Hashtable:
 
 
 def help_store(current_node, insert_node):
-    if current_node.next is None:
+    if current_node.key == insert_node.key and insert_node.data is not None:
+        current_node.data = insert_node.data
+
+    elif current_node.next is None:
         current_node.next = insert_node
     else:
         help_store(current_node.next, insert_node)
@@ -69,6 +72,7 @@ def help_search(current_node, key):
         return current_node.next.data
     else:
         return help_search(current_node.next, key)
+
 
 
 # %%
