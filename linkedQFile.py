@@ -1,28 +1,32 @@
-#Node klass
+# Node klass
 class Node:
-    #init metod för noden
+    # init metod för noden
     def __init__(self, value, next=None):
         self.value = value
         self.next = next
 
-#LinkedQ klass
+
+# LinkedQ klass
 class LinkedQ:
-    #init metod för LinkedQ, first och last declareras som None
+    # init metod för LinkedQ, first och last declareras som None
     def __init__(self):
         self._first = None
         self._last = None
-    #dequeue metoden som retunerar och tar bort första värdet från kön
+
+    # dequeue metoden som retunerar och tar bort första värdet från kön
     def dequeue(self):
         tmp2 = self._first.value
         self._first = self._first.next
         return tmp2
-    #isEmpty retunerar True om kön är tom
+
+    # isEmpty retunerar True om kön är tom
     def isEmpty(self):
         if self._first is None:
             return True
         else:
             return False
-    #enqueue tar in data och lägger det längst bak i kön
+
+    # enqueue tar in data och lägger det längst bak i kön
     def enqueue(self, value):
         if self.isEmpty():
             tmp = Node(value)
@@ -33,7 +37,8 @@ class LinkedQ:
             tmp = self._last
             tmp.next = Node(value)
             self._last = tmp.next
-    #retunerar längden på kön genom att loopa igenom länkade kön
+
+    # retunerar längden på kön genom att loopa igenom länkade kön
     def size(self):
         n = self._first
         count = 0
@@ -42,17 +47,18 @@ class LinkedQ:
             n = n.next
         return count
 
-#test
-if __name__ == "__main__":
-    q = LinkedQ()
-    q.enqueue(1)
-    q.enqueue(2)
-    print(q.size())
-    print(q.isEmpty())
-    x = q.dequeue()
-    y = q.dequeue()
-    print(q.isEmpty())
-    if (x == 1 and y == 2):
-        print("OK")
-    else:
-        print("FAILED")
+    def peek(self):
+        if self._first is not None:
+            return self._first.value
+        return "#"
+
+    def __str__(self):
+        n = self._first
+        q_str = ""
+
+        while n is not None:
+            q_str += str(n.value)
+            n = n.next
+        return q_str
+
+
