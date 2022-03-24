@@ -17,6 +17,8 @@ class LinkedQ:
     def dequeue(self):
         tmp2 = self._first.value
         self._first = self._first.next
+        if self.isEmpty():
+            self._last = None
         return tmp2
 
     # isEmpty retunerar True om kön är tom

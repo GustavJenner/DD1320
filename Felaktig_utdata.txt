@@ -1,0 +1,6 @@
+Saknad stor bokstav vid radslutet a
+Saknad stor bokstav vid radslutet cr12
+Saknad stor bokstav vid radslutet 8
+För litet tal vid radslutet
+För litet tal vid radslutet
+För litet tal vid radslutet 1011
