@@ -294,5 +294,4 @@ def main():  # main
 
 print(test_molecule("Si(C3(COOH)2)4(H2O)7"))
 
-# %%
 
